@@ -1,12 +1,16 @@
 import axios from "axios"
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { NavLink } from "react-router-dom"
+import { useGlobalContext } from "../../context/GlobalContext";
 
 const ListaDeiPost = () => {
 
-    const [posts, setPosts] = useState([])
+    // const [posts, setPosts] = useState([])
 
-    const url = import.meta.env.VITE_ENDPOINT_URL;
+    const { posts, fetchData } = useGlobalContext()
+    
+
+    // const url = import.meta.env.VITE_ENDPOINT_URL;
 
     // useEffect(() => {
     //     console.log(url)
@@ -14,9 +18,10 @@ const ListaDeiPost = () => {
 
     useEffect(() => {
 
-        axios
-            .get(url)
-            .then((res) => setPosts(res.data))
+        // axios
+        //     .get(url)
+        //     .then((res) => setPosts(res.data))
+        fetchData()
 
     }, [])
 

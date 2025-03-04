@@ -1,27 +1,31 @@
 import { useParams, useNavigate } from "react-router-dom"
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useGlobalContext } from "../../context/GlobalContext";
 
 const SinglePost = () => {
 
     const { id } = useParams()
 
-    const url = 'http://localhost:3000/posts.js'
+    // const url = import.meta.env.VITE_ENDPOINT_URL;
 
     const navigate = useNavigate()
 
-    const [singlePost, setSinglePost] = useState({
-        id: '',
-        title: '',
-        content: '',
-        image: null,
-        tags: []
-    })
+    const { singlePost, getPostId } = useGlobalContext()
+
+    // const [singlePost, setSinglePost] = useState({
+    //     id: '',
+    //     title: '',
+    //     content: '',
+    //     image: null,
+    //     tags: []
+    // })
 
     useEffect(() => {
 
-        axios.get(`${url}/${id}`)
-            .then(res => setSinglePost(res.data))
+        // axios.get(`${url}/${id}`)
+        //     .then(res => setSinglePost(res.data))
+        getPostId(id)
 
     }, [id])
 

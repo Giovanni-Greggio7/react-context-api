@@ -6,21 +6,25 @@ import SinglePost from './pages/posts/SinglePost.jsx';
 
 import DefaultLayout from "./layouts/DefaultLayout"
 
+import { GlobalProvider } from './context/GlobalContext';
+
 function App() {
 
 
   return (
     <>
-      <BrowserRouter>
-        <Routes>
-          <Route Component={DefaultLayout}>
-            <Route path="/" Component={HomePage} />
-            <Route path="/contact" Component={ChiSiamo} />
-            <Route path="/products" Component={ListaDeiPost} />
-            <Route path="/products/:id" Component={SinglePost} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
+      <GlobalProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route Component={DefaultLayout}>
+              <Route path="/" Component={HomePage} />
+              <Route path="/contact" Component={ChiSiamo} />
+              <Route path="/products" Component={ListaDeiPost} />
+              <Route path="/products/:id" Component={SinglePost} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </GlobalProvider>
     </>
   )
 }
