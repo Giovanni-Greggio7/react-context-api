@@ -18,12 +18,12 @@ const GlobalProvider = ({ children }) => {
   const url = import.meta.env.VITE_ENDPOINT_URL;
 
   //chimate api
-  //chimata per ottenere tutte le pizze
+  //chimata per ottenere tutti i post
   const fetchData = () => {
     axios.get(url).then((res) => setPosts(res.data));
   };
 
-  //chimata api per la singola pizza
+  //chimata api per mostrare il singolo post
   const getPostId = (id) => {
     axios.get(`${url}/${id}`).then((res) => setSinglePost(res.data));
   };
@@ -37,6 +37,7 @@ const GlobalProvider = ({ children }) => {
 
 
   return(
+    
     <GlobalContext.Provider value={ value }>
         {children}
     </GlobalContext.Provider>
